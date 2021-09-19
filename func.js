@@ -20,6 +20,7 @@ function addTodo() {
 
 // 渲染到 html
 let todoList = document.getElementById("todoList");
+
 function render(arr) {
     let str = "";
     arr.forEach(i => {
@@ -39,11 +40,34 @@ function render(arr) {
 // tab 的切換樣式
 let tab = document.getElementById("tab");
 let toggleStatus = "all";
+
 tab.addEventListener("click", changeTab);
+
 function changeTab(e) {
     toggleStatus = e.target.dataset.tab;
     console.log(toggleStatus)
     let tabs = document.querySelectorAll("#tab li");
     tabs.forEach(i => i.classList.remove("active"));
     e.target.classList.add("active");
+}
+
+// 刪除 & 切換 checked 狀態
+todoList.addEventListener("click", deleteChange);
+
+function deleteChange(e) {
+    let id = e.target.closest("li").dataset.id;
+    console.log(id)
+    if (e.target.classList.value == "delete") {
+        e.preventDefault();
+        todoData = todoData.filter((i) => i.id != id);
+    }else {
+        // 切換 checked 狀態功能
+        todoData.forEach((i, index) => {
+            if (i.id == id) {
+                if (todoData[index].checked == "checked") todoData[index].checked = "";
+                else todoData[index].checked = "checked";
+            }
+        });
+    }
+    render(todoData);
 }
