@@ -15,8 +15,12 @@ function addTodo() {
         todoData.unshift(todo);
         inputText.value = "";
     };
-    render(todoData);
+    updataList();
 };
+
+// 使用 enter 新增 todoData
+inputText.addEventListener("keypress", e => {if (e.key == "Enter") addTodo();});
+
 
 // 渲染到 html
 let todoList = document.getElementById("todoList");
@@ -49,6 +53,7 @@ function changeTab(e) {
     let tabs = document.querySelectorAll("#tab li");
     tabs.forEach(i => i.classList.remove("active"));
     e.target.classList.add("active");
+    updataList();
 }
 
 // 刪除 & 切換 checked 狀態
@@ -69,5 +74,31 @@ function deleteChange(e) {
             }
         });
     }
-    render(todoData);
+    updataList();
 }
+
+// 更新待辦清單
+function updataList() {
+    let showData = [];
+    if (toggleStatus == "all") showData = todoData;
+    else if (toggleStatus == "conduct") showData = todoData.filter(i => i.checked == "");
+    else showData = todoData.filter(i => i.checked == "checked");
+    const num =document.getElementById("num");
+    let todoLength = todoData.filter(i => i.checked == "");
+    num.textContent = todoLength.length;
+    render(showData);
+}
+
+// 初始化
+updataList();
+
+// 清除已完成項目
+const clearBtn = document.getElementById("clearBtn");
+
+clearBtn.addEventListener("click", clear);
+
+function clear (e) {
+    e.preventDefault();
+    todoData = todoData.filter(i => i.checked != "checked");
+    updataList();
+};
