@@ -8,27 +8,26 @@
     <link rel="icon" type="image/x-icon" href="https://kiriqua.com/assets/images/logo/logo.png"/>
     <link rel="shortcut icon" type="image/x-icon" href="https://kiriqua.com/assets/images/logo/logo.png"/>
     <link rel="stylesheet" href="./style.css" type="text/css">
-    <script src="https://unpkg.com/akar-icons-fonts"></script>
 </head>
 <body>
     <div class="container">
-        <h1>TODO LIST</h1>
+        <h1 class="default">TODO LIST</h1>
         <div class="card input">
             <input type="text" placeholder="請輸入待辦事項" id="inputText"/>
             <a href="#" class="btn_add" id="addBtn">+</a>
         </div>
         <div class="card card_list">
             <ul class="tab" id="tab">
-                <li class="active" data-Tab="all">全部</li>
-                <li data-Tab="conduct">待完成</li>
-                <li data-Tab="finish">已完成</li>
+                <li class="active pointer" data-Tab="all">全部</li>
+                <li data-Tab="conduct" class="pointer">待完成</li>
+                <li data-Tab="finish" class="pointer">已完成</li>
             </ul>
             <div class="cart_content">
                 <ul class="list" id="todoList">
                 </ul>
                 <div class="list_footer">
-                    <p>0 個待完成項目</p>
-                    <a href="">清除已完成項目</a>
+                    <p class="default"><span id="num">0</span> 個待完成項目</p>
+                    <a href="#" id="clearBtn">清除已完成項目</a>
                 </div>
             </div>
         </div>
