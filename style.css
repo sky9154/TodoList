@@ -265,3 +265,7 @@ input[type="text"]::placeholder {color: #9f9a91}
 }
 
 .checkbox input:checked ~ span::after {opacity: 1}
+
+.pointer {cursor: pointer}
+
+.default {cursor: default}
