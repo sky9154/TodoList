@@ -1,7 +1,9 @@
 let inputText = document.getElementById("inputText");
 let addBtn = document.getElementById("addBtn");
 let todoData = [];
-
+if (todoData != []) {
+    todoData = JSON.parse(getCookie());
+}
 // 新增 todoData
 addBtn.addEventListener("click", addTodo);
 
@@ -64,7 +66,7 @@ function deleteChange(e) {
     console.log(id)
     if (e.target.classList.value == "delete") {
         e.preventDefault();
-        todoData = todoData.filter((i) => i.id != id);
+        todoData = todoData.filter(i => i.id != id);
     }else {
         // 切換 checked 狀態功能
         todoData.forEach((i, index) => {
@@ -87,6 +89,7 @@ function updataList() {
     let todoLength = todoData.filter(i => i.checked == "");
     num.textContent = todoLength.length;
     render(showData);
+    setCookie(todoData);
 }
 
 // 初始化
@@ -102,3 +105,22 @@ function clear (e) {
     todoData = todoData.filter(i => i.checked != "checked");
     updataList();
 };
+
+// 存入 cookie
+function setCookie(value) {
+    let Days = 365;    //此 cookie 將被儲存的天數
+    let exp  = new Date();  //建立一個時間日期物件;
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = "todoData="+  JSON.stringify(value) + ";expires=" + exp.toGMTString();
+}
+
+//取cookies函式        
+function getCookie() {
+    let cookies = document.cookie;
+    let list = cookies.split("; ");    // 解析出名/值對列表
+    for(let i =0; i < list.length; i++) {
+    let arr = list[i].split("=");    // 解析出名和值
+    if(arr[0]== "todoData") return decodeURIComponent(arr[1]);    // 對cookie值解碼
+    }
+    return "";
+}
