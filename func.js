@@ -1,9 +1,10 @@
 let inputText = document.getElementById("inputText");
 let addBtn = document.getElementById("addBtn");
 let todoData = [];
-if (todoData != []) {
+if(getCookie() != "") {
     todoData = JSON.parse(getCookie());
 }
+
 // 新增 todoData
 addBtn.addEventListener("click", addTodo);
 
@@ -51,7 +52,6 @@ tab.addEventListener("click", changeTab);
 
 function changeTab(e) {
     toggleStatus = e.target.dataset.tab;
-    console.log(toggleStatus)
     let tabs = document.querySelectorAll("#tab li");
     tabs.forEach(i => i.classList.remove("active"));
     e.target.classList.add("active");
@@ -63,7 +63,6 @@ todoList.addEventListener("click", deleteChange);
 
 function deleteChange(e) {
     let id = e.target.closest("li").dataset.id;
-    console.log(id)
     if (e.target.classList.value == "delete") {
         e.preventDefault();
         todoData = todoData.filter(i => i.id != id);
@@ -94,7 +93,7 @@ function updataList() {
 
 // 初始化
 updataList();
-
+setCookie(todoData);
 // 清除已完成項目
 const clearBtn = document.getElementById("clearBtn");
 
