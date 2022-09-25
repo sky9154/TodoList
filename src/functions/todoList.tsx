@@ -8,7 +8,7 @@ type todo = {
 };
 
 let todoData: todo[] = [];
-let toggleStatus = 'all';
+let toggleStatus: string = 'all';
 
 /**
  * 更新列表
@@ -24,9 +24,18 @@ const updataList = () => {
     showData = todoData.filter((item: todo) => item.checked === 'checked');
   }
 
-  const todoLength = todoData.filter((item: todo) => item.checked === '');
+  localStorage.setItem('todoData', JSON.stringify(showData));
+  render(showData);
+}
 
-  render(showData, String(todoLength.length));
+/**
+ * 初始化
+ */
+ export const initialization = () => {
+  const localStorageData: string = localStorage.getItem('todoData');
+  todoData = (!!localStorageData) ? JSON.parse(localStorageData) : [];
+
+  render(todoData);
 }
 
 /**
@@ -69,9 +78,8 @@ export const inputEnter = (event: KeyboardEvent<HTMLInputElement>) => {
 /**
  * 渲染介面
  * @param arr 待辦事項
- * @param number 待辦事項數量
  */
-const render = (arr: todo[], number: string) => {
+const render = (arr: todo[]) => {
   let todoList: string = '';
 
   arr.forEach((item: todo) => {
@@ -86,6 +94,8 @@ const render = (arr: todo[], number: string) => {
       </li>
     `
   });
+
+  const number: string = String(arr.filter((item: todo) => item.checked === '').length);
 
   (document.getElementById('todoList') as HTMLElement).innerHTML = todoList;
   (document.getElementById('num') as HTMLElement).textContent = number;

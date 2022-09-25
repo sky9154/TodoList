@@ -1,5 +1,5 @@
-import React from 'react';
-import { changeTab, addTodo, deleteChang, inputEnter, clear } from '../functions/todoList';
+import React, { useEffect } from 'react';
+import { initialization, changeTab, addTodo, deleteChang, inputEnter, clear } from '../functions/todoList';
 import '../css/style.css';
 
 const Title: React.FC = () => (
@@ -31,15 +31,19 @@ const Content: React.FC = () => (
   </div>
 );
 
-const App: React.FC = () => (
-  <>
-    <Title />
-    <Input />
-    <div className="card card_list">
-      <Tab />
-      <Content />
-    </div>
-  </>
-);
+const App: React.FC = () => {
+  useEffect(() => initialization());
+
+  return (
+    <>
+      <Title />
+      <Input />
+      <div className="card card_list">
+        <Tab />
+        <Content />
+      </div>
+    </>
+  );
+}
 
 export default App;
