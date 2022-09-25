@@ -98,7 +98,7 @@ const render = (arr: todo[], number: string) => {
 export const changeTab = (event: any) => {
   toggleStatus = event.target.id;
 
-  const tabs = document.querySelectorAll("#tab li"); 
+  const tabs = document.querySelectorAll("#tab li");
 
   tabs.forEach((item: Element) => item.classList.remove("active"));
   event.target.classList.add("active");
@@ -111,8 +111,8 @@ export const changeTab = (event: any) => {
  * @param event event
  */
 export const deleteChang = (event: any) => {
-  const id: number = Number(event.target.closest('li').dataset.id);
-  
+  const id: number = Number((event.target.closest('li') as HTMLLIElement).dataset.id);
+
   if (event.target.classList.value === 'delete') {
     event.preventDefault();
 
@@ -132,7 +132,7 @@ export const deleteChang = (event: any) => {
  * 清除已完成項目
  * @param event event
  */
-export const clear = (event: any) => {
+export const clear = (event: React.SyntheticEvent) => {
   event.preventDefault();
   todoData = todoData.filter((item: todo) => item.checked !== "checked");
 
