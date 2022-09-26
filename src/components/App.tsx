@@ -9,7 +9,7 @@ const Title: React.FC = () => (
 const Input: React.FC = () => (
   <div className="card input">
     <input type="text" placeholder="請輸入待辦事項" id="inputText" onKeyDown={inputEnter} />
-    <a href="/#" className="btn_add" id="addBtn" onClick={addTodo}>+</a>
+    <a className="btn_add" id="addBtn" onClick={addTodo}>+</a>
   </div>
 );
 
@@ -26,7 +26,7 @@ const Content: React.FC = () => (
     <ul className="list" id="todoList" onClick={deleteChang}></ul>
     <div className="list_footer">
       <p className="default"><span id="num">0</span> 個待完成項目</p>
-      <a href="/#" id="clearBtn" onClick={clear}>清除已完成項目</a>
+      <a id="clearBtn" onClick={clear}>清除已完成項目</a>
     </div>
   </div>
 );
