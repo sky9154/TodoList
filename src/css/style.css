@@ -40,7 +40,7 @@ body {
   letter-spacing: 0.07em;
   -ms-overflow-style: none;
   height: 100%;
-  width: calc(100vw + 18px);
+  width: 100vw;
   overflow: auto;
 }
 
