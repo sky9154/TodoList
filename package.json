@@ -1,7 +1,6 @@
 {
   "name": "todo-list",
   "private": true,
-  "homepage": "https://sky9154.github.io/TodoList",
   "author": "oF",
   "license": "MIT",
   "scripts": {
