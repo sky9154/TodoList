@@ -1,17 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Noto+Sans+TC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&family=Noto+Sans+TC&display=swap");
 @import "reset.css";
 
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-p,
-span,
-input,
-select,
-textarea {
-  font-family: "Noto Sans TC", sans-serif;
 }
 
 html {
@@ -23,16 +15,18 @@ html {
 
 li {
   list-style: none;
+  cursor: pointer;
 }
 
 body {
   min-height: 100vh;
-  background: #eee;
+  font-family: "Noto Sans TC", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: #333;
-  background-image: url("../../public/images/bg-img.svg");
+  background: #eee;
+  background-image: url("../images/bg-img.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -55,6 +49,7 @@ h1 {
   font-family: "Baloo Tamma 2";
   letter-spacing: 0.5rem;
   font-weight: bold;
+  cursor: default;
 }
 
 @media (max-width: 575px) {
@@ -96,19 +91,19 @@ input[type="text"] {
 }
 
 input[type="text"]::-webkit-input-placeholder {
-  color: #9f9a91;
+  color: #555555;
 }
 
 input[type="text"]:-ms-input-placeholder {
-  color: #9f9a91;
+  color: #555555;
 }
 
 input[type="text"]::-ms-input-placeholder {
-  color: #9f9a91;
+  color: #555555;
 }
 
 input[type="text"]::placeholder {
-  color: #9f9a91;
+  color: #555555;
 }
 
 .input {
@@ -137,6 +132,7 @@ input[type="text"]::placeholder {
   color: #fff;
   font-size: 2rem;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .card_list {
@@ -148,7 +144,7 @@ input[type="text"]::placeholder {
   display: -ms-flexbox;
   display: flex;
   text-align: center;
-  color: #9f9a91;
+  color: #555555;
   font-size: 14px;
 }
 
@@ -198,7 +194,7 @@ input[type="text"]::placeholder {
   width: 1rem;
   height: 1rem;
   background-size: contain;
-  background-image: url("../../public/images/cross.svg");
+  background-image: url("../images/cross.svg");
 }
 
 @media (max-width: 575px) {
@@ -225,11 +221,13 @@ input[type="text"]::placeholder {
   justify-content: space-between;
   padding: 1.5rem 2rem 1rem 0.5rem;
   font-size: 14px;
+  cursor: default;
 }
 
 .list_footer a {
-  color: #9f9a91;
+  color: #555555;
   text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 575px) {
@@ -310,7 +308,7 @@ input[type="text"]::placeholder {
 }
 
 .checkbox input:checked~span {
-  color: #9f9a91;
+  color: #555555;
   text-decoration: line-through;
 }
 
@@ -322,12 +320,4 @@ input[type="text"]::placeholder {
 
 .checkbox input:checked~span::after {
   opacity: 1;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.default {
-  cursor: default;
 }
