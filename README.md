@@ -35,7 +35,7 @@ Demo: https://sky9154.com/TodoList
     - **App.tsx**: Main entry point of the application.
 
     - **index.tsx**: Renders the root React component into the DOM.
-    - style**.css**: Styles for the application.
+    - **style.css**: Styles for the application.
 
 ### License
 
